@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>HOMENAJE A ELSA - CUMPLEAÑOS - JUBILACIÓN</title>
+  <!-- Google Fonts: Cormorant Garamond, Cinzel y Montserrat -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* 1. CONFIGURACIÓN GLOBAL DE PÁGINA Y PDF */
+    @page {
+      size: A4 portrait;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      background-color: #ffffff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* 2. ESTRUCTURA DE PÁGINA A4 */
+    .a4-page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      margin: 0 auto 10mm auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background-color: #fcfcfc;
+      color: #1a1a1a;
+      padding: 10mm 14mm 8mm 14mm;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    }
+
+    /* CABECERA SANGRADA AL MARGEN SUPERIOR */
+    .cover-header {
+      position: relative;
+      width: 100%;
+      margin-top: 0;
+      margin-bottom: 4mm;
+      padding-top: 0;
+      padding-bottom: 3mm;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    .cover-main-title {
+      font-family: 'Cinzel', serif;
+      font-size: 14pt;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: #111111;
+      text-transform: uppercase;
+      margin-bottom: 1.5mm;
+      line-height: 1.1;
+    }
+
+    .cover-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10pt;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #444444;
+     
+    }
+
+    /* PÁGINA 1: IMAGEN CON MARCA DE AGUA */
+    .image-container-full { 
+      width: 100%; 
+      height: 255mm; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+    }
+    
+    .image-wrapper {
+      position: relative;
+      display: inline-block;
+      max-width: 100%;
+      max-height: 255mm;
+    }
+
+    .image-wrapper img { 
+      max-width: 100%; 
+      max-height: 255mm; 
+      width: auto;
+      height: auto;
+      object-fit: contain; 
+      display: block;
+    }
+    
+    .image-watermark { 
+      position: absolute; 
+      bottom: 8px; 
+      left: 8px; 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 7.5pt; 
+      letter-spacing: 1.5px; 
+      color: rgba(255, 255, 255, 0.9); 
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+      pointer-events: none; 
+      background: rgba(0, 0, 0, 0.45); 
+      padding: 3px 8px; 
+      z-index: 10;
+      border-radius: 2px;
+    }
+
+    /* PÁGINA 2: TEXTO DEL DISCURSO CON TAMAÑO FIJADO A 14.5PT */
+    .speech-text {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 14.5pt !important;
+      line-height: 1.32;
+      color: #222222;
+      text-align: justify;
+      text-justify: inter-word;
+    }
+
+    .speech-text p {
+      margin: 0 0 2.1mm 0;
+    }
+
+    .speech-text strong {
+      font-weight: 700;
+      color: #000000;
+    }
+
+    .print-btn-container { 
+      text-align: center; 
+      margin-top: 1mm; 
+    }
+
+    .print-btn { 
+      background-color: #111111; 
+      color: #ffffff; 
+      padding: 2.5mm 8mm; 
+      font-family: 'Montserrat', sans-serif; 
+      font-size: 8pt; 
+      letter-spacing: 2px; 
+      border: none; 
+      cursor: pointer; 
+      text-transform: uppercase;
+    }
+
+    /* 3. REGLAS ESPECÍFICAS PARA IMPRESIÓN Y EXPORTACIÓN A PDF */
+    @media print {
+      html, body {
+        width: 210mm !important;
+        height: auto !important;
+        background-color: #ffffff !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+      }
+
+      .a4-page {
+        width: 210mm !important;
+        height: 297mm !important;
+        max-height: 297mm !important;
+        margin: 0 !important;
+        padding: 8mm 12mm 6mm 12mm !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        display: block !important;
+      }
+
+      .speech-text {
+        font-size: 14.5pt !important;
+        line-height: 1.32 !important;
+      }
+
+      .page-2 {
+        page-break-before: always !important;
+        break-before: page !important;
+      }
+
+      .print-btn-container {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1: CABECERA E IMAGEN CON MARCA DE AGUA -->
+  <div class="a4-page page-1">
+    <div>
+      <div class="cover-header">
+        <div class="cover-main-title">65 AÑOS Y FIN DE TURNO</div>
+        <div class="cover-subtitle">Para: Elsa Borrajo Feijoo</div>
+      </div>
+      <div class="image-container-full">
+        <div class="image-wrapper">
+          <img src="image1.jpg" alt="Siluetas bailando">
+          <div class="image-watermark">© Daniel Remeseiro</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PÁGINA 2: CABECERA Y TEXTO -->
+  <div class="a4-page page-2">
+    <div>
+      <div class="cover-header">
+        <div class="cover-main-title">65 AÑOS Y FIN DE TURNO</div>
+        <div class="cover-subtitle">Para: Elsa Borrajo Feijoo</div>
+      </div>
+
+      <div class="speech-text">
+        <p><strong>Querida Elsa:</strong></p>
+        <p>Hoy no estás aquí por casualidad, aunque seguro que durante los últimos tres días has sospechado de todo el mundo porque nos conoces demasiado bien. Pero resulta que Pedro, Laura, tus amigos, tus amigas y este ejército de conspiradores que tienes por entorno nos hemos puesto de acuerdo para cometer una ilegalidad: hacerte una fiesta sorpresa y obligarte a encajar, por una vez en la vida, el protagonismo que siempre les cedes a los demás.</p>
+        <p>Cumples 65 años. Y lo haces, además, firmando la rendición incondicional de tu vida laboral. Te jubilas. Se dice pronto, pero quienes te conocemos bien sabemos que dedicarse a la sanidad pública durante décadas no es un trabajo: es una trinchera, un sacerdocio laico y una prueba de resistencia para la que no hay entrenamiento previo. Ha habido guardias interminables, turnos de noche de los que regresabas con cara de haber visto el fin del mundo y esa habilidad casi milagrosa para colgar el uniforme en la puerta y dar la cara por los tuyos en cuanto cruzabas el umbral.</p>
+        <p>Porque para quienes te rodean no eres solo la profesional impecable que resolvía emergencias entre pasillos de linóleo y luces fluorescentes. Para todos nosotros eres esa fuerza de la naturaleza capaz de adivinar un problema a kilómetros de distancia, de curar cualquier mal momento con un gesto acogedor y de mantener el tipo cuando la vida se ponía cuesta arriba. A veces cometemos el error egoísta de dar por sentado que las personas como tú son eternas, indestructibles y que vienen de fábrica con un tanque infinito de paciencia. Hoy, mirando atrás, nos damos cuenta del esfuerzo monumental que había detrás de cada uno de tus gestos.</p>
+        <p>Pedro ha tenido que aguantar tus nervios, tus listas de tareas y tu obsesión por tenerlo todo bajo control. Laura y el resto de la tribu han tenido que aprender a compartirte con un trabajo que se llevaba tus mejores horas y mucha de tu energía. Pero hoy la sanidad pierde a una de sus mejores piezas y todos los que te queremos ganamos la batalla definitiva: te recuperamos a tiempo completo.</p>
+        <p>A partir de mañana se acabaron los madrugones de infarto, los horarios imposibles y los problemas ajenos a deshoras. Te toca aprender el arte —que seguro te va a costar un poco— de no hacer nada sin sentir culpa. Te toca pasear, tomarte el café frío solo si te da la gana, viajar, discutir con la televisión y dejar que seamos nosotros los que nos preocupemos por ti.</p>
+        <p>Que les den por un tiempo a las urgencias. Hoy la única urgencia real es brindar por ti, por tus 65 años, por la mujer libre y valiente que eres y por todo el camino hermoso que te queda por delante.</p>
+        <p><strong>Feliz jubilación, Elsa. Te lo has ganado a pulso. Gracias por todo.</strong></p>
+      </div>
+    </div>
+
+    <!-- BOTÓN DE IMPRESIÓN -->
+    <div class="print-btn-container">
+      <button class="print-btn" onclick="window.print()">Imprimir / Guardar en PDF</button>
+    </div>
+  </div>
+
+</body>
+</html>
